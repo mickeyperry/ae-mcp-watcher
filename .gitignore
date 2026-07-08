@@ -1,0 +1,9 @@
+# signing material — never commit
+cert/
+*.p12
+
+# build tooling (downloaded on demand)
+tools/
+
+node_modules/
+*.tmp

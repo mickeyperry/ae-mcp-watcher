@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>AE MCP</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1a1a;
+      color: #ccc;
+      font-family: -apple-system, "Segoe UI", sans-serif;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .logo {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    .indicator-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #444;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .dot.running {
+      background: #4caf50;
+      box-shadow: 0 0 8px #4caf5099;
+    }
+    .dot.stopped {
+      background: #f44336;
+      box-shadow: 0 0 8px #f4433655;
+    }
+    .dot.connecting {
+      background: #ff9800;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .status-text {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #888;
+      transition: color 0.3s;
+      min-width: 90px;
+    }
+    .status-text.running { color: #4caf50; }
+    .status-text.stopped { color: #f44336; }
+
+    .stats {
+      font-size: 11px;
+      color: #555;
+      text-align: center;
+      line-height: 1.8;
+      min-height: 36px;
+    }
+    .stats span { color: #777; }
+
+    .btn {
+      background: #2e2e2e;
+      color: #bbb;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      padding: 7px 24px;
+      font-size: 12px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.15s;
+      min-width: 120px;
+    }
+    .btn:hover { background: #383838; color: #fff; }
+    .btn.start { border-color: #4caf50; color: #4caf50; }
+    .btn.start:hover { background: #4caf5022; }
+    .btn.stop  { border-color: #f44336; color: #f44336; }
+    .btn.stop:hover  { background: #f4433622; }
+  </style>
+</head>
+<body>
+  <div class="logo">AE MCP</div>
+
+  <div class="indicator-row">
+    <div class="dot connecting" id="dot"></div>
+    <div class="status-text" id="statusText">Connecting…</div>
+  </div>
+
+  <div class="stats" id="stats">—</div>
+
+  <button class="btn" id="toggleBtn" onclick="toggleWatcher()">—</button>
+
+  <script src="main.js"></script>
+</body>
+</html>
